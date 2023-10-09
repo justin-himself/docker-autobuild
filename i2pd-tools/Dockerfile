@@ -19,11 +19,13 @@ RUN apk update \
 
 FROM alpine:latest
 
-COPY --from=builder  /build/i2pd /usr/local/bin
+COPY --from=builder  /build/. /usr/local/bin
 
 RUN \
   apk --no-cache add boost-filesystem boost_chrono \
     boost-program_options boost-date_time \
-    libssl1.1 zlib &&\
+    libssl1.1 zlib \
+  && mkdir /workdir
 
+WORKDIR /workdir
 CMD ["/bin/sh"]
