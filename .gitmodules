@@ -27,3 +27,6 @@
 [submodule "lookbusy/speedtest-go"]
 	path = lookbusy/speedtest-go
 	url = https://github.com/showwin/speedtest-go
+[submodule "i2pd-tools/i2pd-tools"]
+	path = i2pd-tools/i2pd-tools
+	url = https://github.com/PurpleI2P/i2pd-tools
