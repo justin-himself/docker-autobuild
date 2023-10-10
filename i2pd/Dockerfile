@@ -7,7 +7,7 @@ RUN apk update \
      make gcc \g++ libtool zlib-dev boost-dev build-base \
       openssl-dev openssl miniupnpc-dev \
     && cd /build \
-    && make -j8 USE_UPNP=yes \
+    && make USE_UPNP=yes \
     && strip i2pd 
 
 # 2. Adding required libraries to run i2pd to ensure it will run.

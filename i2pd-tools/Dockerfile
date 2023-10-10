@@ -7,7 +7,7 @@ RUN apk update \
      make gcc \g++ libtool zlib-dev boost-dev build-base \
       openssl-dev \
     && cd /src \
-    && make -j8 \
+    && make \
     && mkdir /build \
     && find . -type f ! -name "*.*" -maxdepth 1 -exec cp {} /build \; \
     && cd /build \
