@@ -22,7 +22,7 @@ FROM alpine:latest
 COPY --from=builder  /build/. /usr/local/bin
 
 RUN \
-  apk --no-cache add boost-filesystem boost_chrono \
+  apk --no-cache add boost-filesystem boost-chrono \
     boost-program_options boost-date_time \
     libssl1.1 zlib \
   && mkdir /workdir
