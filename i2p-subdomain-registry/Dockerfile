@@ -9,7 +9,7 @@ FROM justinhimself/i2pd-tools as i2pd-tools
 FROM golang:alpine
 
 COPY --from=builder /build/websrv /usr/local/bin
-COPY --from=i2pd-tools /usr/local/bin/regaddr_3ld /usr/bin
+COPY --from=i2pd-tools /usr/local/bin/regaddr_3ld /usr/local/bin
 
 COPY i2p-subdomain-registry /workdir
 WORKDIR /workdir
