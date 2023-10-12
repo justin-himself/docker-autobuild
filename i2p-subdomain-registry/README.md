@@ -1,4 +1,4 @@
-# i2pd-tools
+# i2p-domain-registry
 
 ![](https://img.shields.io/badge/x86-9cf)
 ![](https://img.shields.io/badge/x86_64-red)
@@ -8,15 +8,4 @@
 ![](https://img.shields.io/badge/PowerPC_64_le-blueviolet)
 ![](https://img.shields.io/badge/IBM_Z-blue)
 
-> multiarch, i2pd-tools image that works out of the box
-
-## Quick start
-
-```bash
-docker run --rm -it \
-  -v ${PWD}:/workdir \
-  justinhimself/i2pd \
-  /usr/bin/keygen privkey.dat
-```
-
-See [PurpleI2P/i2pd-tools](https://github.com/PurpleI2P/i2pd-tools) for documentation.
+https://github.com/justin-himself/i2p-subdomain-registry/
