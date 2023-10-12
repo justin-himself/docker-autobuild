@@ -18,7 +18,7 @@ on:
 env:
   #REGISTRY: ghcr.io
   REGISTRY: docker.io
-  NAME: i2pd-subdomain-registry
+  NAME: i2p-subdomain-registry
   ARCH: linux/amd64, linux/arm64/v8, linux/arm/v6, linux/arm/v7, linux/386, linux/ppc64le, linux/s390x
   DESCRIPTION: justin-himself/i2p-subdomain-registry
 
