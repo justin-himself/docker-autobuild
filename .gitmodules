@@ -30,3 +30,6 @@
 [submodule "i2pd-tools/i2pd-tools"]
 	path = i2pd-tools/i2pd-tools
 	url = https://github.com/PurpleI2P/i2pd-tools
+[submodule "i2p-subdomain-registry/i2p-subdomain-registry"]
+	path = i2p-subdomain-registry/i2p-subdomain-registry
+	url = https://github.com/justin-himself/i2p-subdomain-registry
