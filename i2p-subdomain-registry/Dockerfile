@@ -6,7 +6,7 @@ WORKDIR /build
 RUN go build -o websrv
 
 FROM justinhimself/i2pd-tools as i2pd-tools
-FROM golang:alpine
+FROM alpine
 
 COPY --from=builder /build/websrv /usr/local/bin
 COPY --from=i2pd-tools /usr/local/bin/regaddr_3ld /usr/local/bin
