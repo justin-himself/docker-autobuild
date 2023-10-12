@@ -26,6 +26,8 @@ RUN \
     boost-program_options boost-date_time \
     libssl1.1 zlib \
   && mkdir /workdir \
-  $$ CMD="/workdir"
+  $$ PWD="/workdir"
+
+WORKDIR /workdir
 
 CMD ["/bin/sh"]
