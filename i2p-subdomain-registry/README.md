@@ -12,6 +12,8 @@ https://github.com/justin-himself/i2p-subdomain-registry/
 
 ## Quickstart 
 
+Place the registry's private key /path/to/config/registry.dat
+
 Place the 2ld.txt in `/path/to/config`.  
 Here's a valid 2ld.txt
 
