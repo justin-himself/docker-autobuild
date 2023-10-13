@@ -10,8 +10,12 @@ FROM alpine
 
 COPY --from=builder /build/websrv /usr/local/bin
 COPY --from=i2pd-tools /usr/local/bin/regaddr_3ld /usr/local/bin
-
 COPY i2p-subdomain-registry /workdir
-WORKDIR /workdir
 
+RUN \
+    apk --no-cache add boost-filesystem boost-chrono \
+    boost-program_options boost-date_time \
+    libssl1.1 zlib \
+    
+WORKDIR /workdir
 EXPOSE 8080
