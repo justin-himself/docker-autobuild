@@ -15,7 +15,7 @@
 ```bash
 docker run --rm -it \
   -v ${PWD}:/workdir \
-  justinhimself/i2pd \
+  justinhimself/i2pd-tools \
   /usr/bin/keygen privkey.dat
 ```
 
