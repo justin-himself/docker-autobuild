@@ -25,8 +25,7 @@ RUN \
   apk --no-cache add boost-filesystem boost-chrono \
     boost-program_options boost-date_time \
     libssl1.1 zlib \
-  && mkdir /workdir \
-  $$ PWD="/workdir"
+  && mkdir /workdir
 
 WORKDIR /workdir
 
