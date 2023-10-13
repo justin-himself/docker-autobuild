@@ -28,7 +28,7 @@ Then run
 docker run --name i2p-subdomain-registry \
     -p 8080:8080 \
     --restart always \
-    --v /path/to/config:/workdir/config \
+    -v /path/to/config:/workdir/config \
     -d justinhimself/i2p-subdomain-registry \
     websrv
 ```
