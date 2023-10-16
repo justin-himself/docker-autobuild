@@ -20,7 +20,7 @@ env:
   #REGISTRY: ghcr.io
   REGISTRY: docker.io
   NAME: lookbusy
-  ARCH: linux/386,  linux/amd64,  linux/arm64/v8, linux/arm/v7, linux/arm/v6, linux/ppc64le, linux/s390x
+  ARCH: linux/386,  linux/amd64,  linux/arm64/v8, linux/arm/v7, linux/arm/v6, linux/arm/v5, linux/ppc64le, linux/s390x, linux/mips64le
   DESCRIPTION: lookbusy alpine image (以及 Oracle 一键命令, 包含网络占用)
 
 jobs:
