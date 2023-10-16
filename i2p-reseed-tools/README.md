@@ -24,9 +24,28 @@ docker run --rm -it \
 
 ## Usage 
 
+### First time config
+
+If this is your first time running a reseed server (ie. you don't have any existing keys), 
+you can simply run the command and follow the prompts to create the appropriate keys, crl and certificates.
+Afterwards an HTTPS reseed server will start on the default port and generate 6 files in your current directory 
+(a TLS key, certificate and crl, and a su3-file signing key, certificate and crl).
+
+```bash
+docker run --rm -it \
+    --name i2p-reseed-server \
+    -p 8443:8443 \
+    -v /tmp/_data/netDb:/netDb \
+    -v /tmp/config:/workdir \
+    justinhimself/i2p-reseed-tools \
+    reseed-tools reseed --signer=you@mail.i2p --netdb=/netDb
+```
+
+Ctrl-C to exit the server and restart with the following commands with your generated cert files.
+
 ### Locally behind a webserver (reverse proxy setup), preferred:
 
-```
+```bash
 docker run \
     --name i2p-reseed-server \
     --restart always \
@@ -39,7 +58,7 @@ docker run \
 
 ### Without a webserver, standalone with TLS support
 
-```
+```bash
 docker run -it \
     --name i2p-reseed-server \
     --restart always \
@@ -50,10 +69,6 @@ docker run -it \
     reseed-tools reseed --signer=you@mail.i2p --netdb=/netDb --tlsHost=your-domain.tld
 ```
 
-If this is your first time running a reseed server (ie. you don't have any existing keys), 
-you can simply run the command and follow the prompts to create the appropriate keys, crl and certificates.
-Afterwards an HTTPS reseed server will start on the default port and generate 6 files in your current directory 
-(a TLS key, certificate and crl, and a su3-file signing key, certificate and crl).
 
 Get the source code here on github or a pre-build binary anonymously on 
 
