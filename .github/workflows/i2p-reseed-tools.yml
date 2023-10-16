@@ -1,4 +1,4 @@
-name: lookbusy
+name: i2p-reseed-tools
 
 # This workflow uses actions that are not certified by GitHub.
 # They are provided by a third-party and are governed by
@@ -8,7 +8,7 @@ name: lookbusy
 on:
   workflow_dispatch:
   schedule:
-    - cron: "00 1 1 * *"
+    - cron: "00 2 1 1 *"
   #push:
   #branches: [ master ]
   # Publish semver tags as releases.
@@ -19,9 +19,9 @@ on:
 env:
   #REGISTRY: ghcr.io
   REGISTRY: docker.io
-  NAME: lookbusy
+  NAME: i2p-reseed-tools
   ARCH: linux/386,  linux/amd64,  linux/arm64/v8, linux/arm/v7, linux/arm/v6, linux/ppc64le, linux/s390x
-  DESCRIPTION: lookbusy alpine image (以及 Oracle 一键命令, 包含网络占用)
+  DESCRIPTION: i2p-reseed-tools alpine multiarch image
 
 jobs:
   build:
@@ -79,8 +79,6 @@ jobs:
           platforms: ${{ env.ARCH }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha
 
       - name: Available platforms
         run: echo ${{ steps.build-and-push.outputs.platforms }}

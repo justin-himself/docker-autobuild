@@ -1,4 +1,4 @@
-FROM golang:1.21-alpine as builder
+FROM golang:alpine as builder
 
 COPY i2p-tools /build
 WORKDIR /build
