@@ -125,7 +125,7 @@ fi
 
 echo -n "\nUpdating ip database...\n\n"
 
-php xcat Tool initQQwry
+php xcat Update
 
 
 echo "\nAll set, please enjoy!\n\n"
