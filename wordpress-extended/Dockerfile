@@ -15,8 +15,7 @@ RUN \
   && sed -i '1i\<?php ini_set("memory_limit","-1");?>' /usr/local/lib/php/PEAR/Installer.php \
   && apt-get update \
   && apt-get install -y zlib1g-dev libmemcached-dev \
-  && pecl install memcached \
-  && pecl install -o -f redis \
+  && pecl install -o -f memcached-3.2.0 redis \
   && docker-php-ext-enable memcached \
   && docker-php-ext-enable redis \
   && a2enmod ext_filter headers \
