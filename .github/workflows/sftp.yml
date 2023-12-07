@@ -3,7 +3,7 @@ name: Build_sftp
 on:
   workflow_dispatch:
   schedule:
-    - cron: "00 5 * * *"
+    - cron: "0 0 9 * *"
   #push:
   #branches: [ master ]
   # Publish semver tags as releases.

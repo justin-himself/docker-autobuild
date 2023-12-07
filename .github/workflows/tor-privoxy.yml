@@ -7,7 +7,7 @@ name: Build_tor-privoxy
 on:
   workflow_dispatch:
   schedule:
-    - cron: "00 7 * * *"
+    - cron: "0 0 11 * *"
   #push:
   #branches: [ master ]
   # Publish semver tags as releases.

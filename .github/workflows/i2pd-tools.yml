@@ -7,7 +7,7 @@ name: Build_i2pd-tools
 on:
   workflow_dispatch:
   schedule:
-    - cron: "00 0 * * *"
+    - cron: "0 0 4 * *"
   #push:
   #branches: [ master ]
   # Publish semver tags as releases.

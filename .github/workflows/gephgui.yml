@@ -7,7 +7,7 @@ name: Build_gephgui
 on:
   workflow_dispatch:
   schedule:
-    - cron: "00 1 * * *"
+    - cron: "0 0 2 * *"
   #push:
   #branches: [ master ]
   # Publish semver tags as releases.

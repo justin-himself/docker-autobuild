@@ -8,7 +8,7 @@ name: Build_wordpress-extended
 on:
   workflow_dispatch:
   schedule:
-    - cron: "00 8 * * *"
+    - cron: "0 0 12 * *"
   #push:
   #branches: [ master ]
   # Publish semver tags as releases.

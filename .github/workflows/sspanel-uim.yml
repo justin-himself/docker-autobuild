@@ -8,7 +8,7 @@ name: Build_sspanel-uim
 on:
   workflow_dispatch:
   schedule:
-    - cron: "00 6 * * *"
+    - cron: "0 0 10 * *"
   #push:
   #branches: [ master ]
   # Publish semver tags as releases.
