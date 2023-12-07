@@ -35,20 +35,20 @@ $_ENV['checkNodeIp'] = true;               //是否webapi验证节点ip
 // db_host 例: localhost（可解析的主机名）, 127.0.0.1（IP 地址）, 10.0.0.2:4406（含端口)
 // db_socket 例：/var/run/mysqld/mysqld.sock（需使用绝对地址）
 $_ENV['db_driver']    = 'mysql';
-$_ENV['db_host']      = getenv_docker('DB_HOST',"sspaneldb") . ':' . getenv('DB_PORT',3306);
+$_ENV['db_host']      = getenv_docker('DB_HOST',"sspaneldb");
 $_ENV['db_socket']    = getenv_docker('DB_SOCKET','');
 $_ENV['db_database']  = getenv_docker('DB_DATABASE','sspanel');           //数据库名
 $_ENV['db_username']  = getenv_docker('DB_USERNAME','root');              //数据库用户名
 $_ENV['db_password']  = getenv_docker('DB_PASSWORD','');  
-$_ENV['db_port']      = '3306';              //端口
+$_ENV['db_port']      = getenv_docker('DB_PORT',3306);              //端口
 #高级
 $_ENV['db_charset']   = 'utf8mb4';
 $_ENV['db_collation'] = 'utf8mb4_unicode_ci';
 $_ENV['db_prefix']    = '';
 
 //Redis设置-------------------------------------------------------------------------------------------
-$_ENV['redis_host']     = '127.0.0.1';        //Redis地址
-$_ENV['redis_port']     = 6379;               //Redis端口
+$_ENV['redis_host']     = getenv_docker('REDIS_HOST','127.0.0.1');          //Redis地址
+$_ENV['redis_port']     = getenv_docker('REDIS_PORT',6379);                 //Redis端口
 $_ENV['redis_timeout']  = 2;                  //Redis连接超时时间，单位秒
 $_ENV['redis_username'] = '';                 //Redis用户名，留空则不使用用户名连接
 $_ENV['redis_password'] = '';                 //Redis密码，留空则无密码

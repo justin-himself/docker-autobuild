@@ -51,6 +51,8 @@ DB_PORT="3306"
 DB_DATABASE="sspanel"
 DB_USERNAME="root"
 DB_PASSWORD="DB_PASSWORD"
+REDIS_HOST="sspanelredis"
+REDIS_PORT="6379"
 ```
 
 ```yml
@@ -71,7 +73,6 @@ services:
     environment:
       SSPANEL_KEY: ${SSPANEL_KEY}
       SSPANEL_BASEURL: ${SSPANEL_BASEURL}
-      SSPANEL_MUKEY: ${SSPANEL_MUKEY}
       SSPANEL_APPNAME: ${SSPANEL_APPNAME}
       SSPANEL_ADMIN_EMAIL: ${SSPANEL_ADMIN_EMAIL}
       SSPANEL_ADMIN_PASSWORD: ${SSPANEL_ADMIN_PASSWORD}
@@ -81,6 +82,7 @@ services:
       DB_DATABASE: ${DB_DATABASE}
       DB_USERNAME: ${DB_USERNAME}
       DB_PASSWORD: ${DB_PASSWORD}
+      REDIS
 
   sspaneldb:
     image: mariadb:latest
@@ -94,59 +96,15 @@ services:
       MARIADB_MYSQL_LOCALHOST_USER: ${DB_USERNAME}
       MARIADB_ROOT_PASSWORD: ${DB_PASSWORD}
 
+  sspanelredis:
+    image: redis:latest
+    container_name: sspanelredis
+    restart: always
+    networks:
+      - sspanel
+
 networks:
   sspanel:
-```
-
-> 通过命令行创建容器
-
-```bash
-PATH_TO_SITE="/var/sspanel"
-SSPANEL_KEY="PANEL_KEY"
-SSPANEL_BASEURL="https://www.example.com"
-SSPANEL_MUKEY="PANEL_MUKEY"
-SSPANEL_APPNAME="SSPanel-UIM"
-SSPANEL_ADMIN_EMAIL="admin@example.com"
-SSPANEL_ADMIN_PASSWORD="ADMIN_PASSWORD"
-SSPANEL_DEBUG="0"
-DB_HOST="sspaneldb"
-DB_PORT="3306"
-DB_DATABASE="sspanel"
-DB_USERNAME="root"
-DB_PASSWORD="DB_PASSWORD"
-
-docker network create sspanel
-
-docker run \
-  --name sspaneldb \
-  --restart always \
-  --net=sspanel \
-  --hostname=sspaneldb \
-  -v $PATH_TO_SITE/db:/var/lib/mysql \
-  -e MARIADB_MYSQL_LOCALHOST_USER=$DB_USERNAME \
-  -e MARIADB_ROOT_PASSWORD=$DB_PASSWORD \
-  -d mariadb:latest
-
-docker run \
-  --name sspanel \
-  --restart always \
-  --net=sspanel \
-  --hostname="sspanel" \
-  -p 80:80 \
-  -v $PATH_TO_SITE/web:/var/www/html \
-  -e SSPANEL_KEY=$SSPANEL_KEY \
-  -e SSPANEL_BASEURL=$SSPANEL_BASEURL \
-  -e SSPANEL_MUKEY=$SSPANEL_MUKEY \
-  -e SSPANEL_APPNAME=$SSPANEL_APPNAME  \
-  -e SSPANEL_ADMIN_EMAIL=$SSPANEL_ADMIN_EMAIL \
-  -e SSPANEL_ADMIN_PASSWORD=$SSPANEL_ADMIN_PASSWORD \
-  -e SSPANEL_DEBUG=$SSPANEL_DEBUG \
-  -e DB_HOST=$DB_HOST \
-  -e DB_PORT=$DB_PORT \
-  -e DB_DATABASE=$DB_DATABASE \
-  -e DB_USERNAME=$DB_USERNAME \
-  -e DB_PASSWORD=$DB_PASSWORD \
-  -d justinhimself/sspanel-uim:latest
 ```
 
 ### Parameters

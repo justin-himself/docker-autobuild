@@ -16,10 +16,6 @@ if [ -z "$SSPANEL_BASEURL" ];then
     echo >&2 "SSPANEL_BASEURL not set!"
     exit
 fi
-if [ -z "$SSPANEL_MUKEY" ];then
-    echo >&2 "SSPANEL_MUKEY not set!"
-    exit
-fi
 if [ -z "$DB_HOST" ] && [ -z "$DB_SOCKET" ];then
     echo >&2 "DB_HOST or DB_SOCKET not set!"
     exit
