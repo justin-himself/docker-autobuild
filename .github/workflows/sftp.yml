@@ -1,4 +1,4 @@
-name: sftp
+name: Build_sftp
 
 on:
   workflow_dispatch:
