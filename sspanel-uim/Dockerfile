@@ -42,4 +42,4 @@ RUN cp config/appprofile.example.php config/appprofile.php && \
 
 WORKDIR /var/www/html
 VOLUME /var/www/html
-ENTRYPOINT ["/docker-entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "/docker-entrypoint.sh"]
