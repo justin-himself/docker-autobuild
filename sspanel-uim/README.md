@@ -35,7 +35,8 @@ Todo List:
 
 > 通过 docker-compose 创建容器 
 
-* 
+* [.env](https://raw.githubusercontent.com/justin-himself/docker-autobuild/master/sspanel-uim/.env)
+* [docker-compose.yml](https://raw.githubusercontent.com/justin-himself/docker-autobuild/master/sspanel-uim/docker-compose.yml)
 
 
 ### Parameters
