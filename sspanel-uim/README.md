@@ -31,81 +31,12 @@ Todo List:
 - [ ] 允许变量控制 php 内存大小设置
 - [ ] 增加更多主题的镜像
 
-### Usage
+### QuickStart
 
-> 通过 docker-compose 创建容器 (推荐)
+> 通过 docker-compose 创建容器 
 
-```.env
-# .env
+* 
 
-PATH_TO_SITE="/var/sspanel"
-SSPANEL_KEY="PANEL_KEY"
-SSPANEL_BASEURL="https://www.example.com"
-SSPANEL_MUKEY="PANEL_MUKEY"
-SSPANEL_ADMIN_EMAIL="admin@example.com"
-SSPANEL_ADMIN_PASSWORD="ADMIN_PASSWORD"
-SSPANEL_APPNAME="SSPanel-UIM"
-SSPANEL_DEBUG="0"
-DB_HOST="sspaneldb"
-DB_PORT="3306"
-DB_DATABASE="sspanel"
-DB_USERNAME="root"
-DB_PASSWORD="DB_PASSWORD"
-REDIS_HOST="sspanelredis"
-REDIS_PORT="6379"
-```
-
-```yml
-# docker-compose.yml
-version: "3"
-
-services:
-  sspanel:
-    image: justinhimself/sspanel-uim:latest
-    container_name: sspanel
-    restart: always
-    ports:
-      - 80:80
-    networks:
-      - sspanel
-    volumes:
-      - ${PATH_TO_SITE}/web:/var/www/html
-    environment:
-      SSPANEL_KEY: ${SSPANEL_KEY}
-      SSPANEL_BASEURL: ${SSPANEL_BASEURL}
-      SSPANEL_APPNAME: ${SSPANEL_APPNAME}
-      SSPANEL_ADMIN_EMAIL: ${SSPANEL_ADMIN_EMAIL}
-      SSPANEL_ADMIN_PASSWORD: ${SSPANEL_ADMIN_PASSWORD}
-      SSPANEL_DEBUG: ${SSPANEL_DEBUG}
-      DB_HOST: ${DB_HOST}
-      DB_PORT: ${DB_PORT}
-      DB_DATABASE: ${DB_DATABASE}
-      DB_USERNAME: ${DB_USERNAME}
-      DB_PASSWORD: ${DB_PASSWORD}
-      REDIS
-
-  sspaneldb:
-    image: mariadb:latest
-    container_name: sspaneldb
-    restart: always
-    networks:
-      - sspanel
-    volumes:
-      - ${PATH_TO_SITE}/db:/var/lib/mysql
-    environment:
-      MARIADB_MYSQL_LOCALHOST_USER: ${DB_USERNAME}
-      MARIADB_ROOT_PASSWORD: ${DB_PASSWORD}
-
-  sspanelredis:
-    image: redis:latest
-    container_name: sspanelredis
-    restart: always
-    networks:
-      - sspanel
-
-networks:
-  sspanel:
-```
 
 ### Parameters
 
