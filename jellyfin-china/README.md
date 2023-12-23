@@ -20,13 +20,14 @@ lscr.io/linuxserver/jellyfin -> justinhimself/jellyfin-china
 ### Dockerfile
 
 ```dockerfile
-FROM debian as builder
-
-WORKDIR /
-COPY append_hosts.sh /
-RUN apt update && apt -y install dnsutils
-RUN bash /append_hosts.sh
-
 FROM lscr.io/linuxserver/jellyfin
-COPY --from=builder /etc/hosts /etc/hosts
+
+COPY append_hosts.sh /
+RUN apt update &&\
+    apt -y install dnsutils &&\
+    apt clean &&\
+    rm -rf /var/lib/apt/lists/*
+
+RUN bash /append_hosts.sh &&\
+    cat /etc/hosts
 ```
