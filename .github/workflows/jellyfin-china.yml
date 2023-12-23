@@ -68,17 +68,39 @@ jobs:
           tags: |
             type=raw, value=latest
 
+      - name: DNS Lookup and Format
+        id: dns_lookup
+        run: |
+          CHINA_DNSSERVER="202.46.34.75"
+          DOMAIN_LIST=("api.themoviedb.org" "image.tmdb.org" "api.thetvdb.org" "www.omdbapi.com")
+          FORMATTED_HOSTS=""
+
+          for domain in "${DOMAIN_LIST[@]}"; do
+            ip=$(nslookup "$domain" "$CHINA_DNSSERVER" | awk '/^Address: / { print $2 }' | head -n 1)
+            if [ -n "$ip" ]; then
+              FORMATTED_HOSTS+="${domain}:${ip},"
+            fi
+          done
+
+          # Remove the trailing comma
+          FORMATTED_HOSTS=$(echo "$FORMATTED_HOSTS" | sed 's/,$//')
+
+          echo "FORMATTED_HOSTS=${FORMATTED_HOSTS}" >> $GITHUB_ENV
+          echo "${FORMATTED_HOSTS}"
+
+
       # Build and push Docker image with Buildx (don't push on PR)
       # https://github.com/docker/build-push-action
       - name: Build and push Docker image
         id: build-and-push
-        uses: docker/build-push-action@ad44023a93711e3deb337508980b4b5e9bcdc5dc
+        uses: docker/build-push-action
         with:
           context: ${{ env.NAME }}
           push: ${{ github.event_name != 'pull_request' }}
           platforms: ${{ env.ARCH }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+          add-hosts: ${{ env.FORMATTED_HOSTS }}
 
       - name: Available platforms
         run: echo ${{ steps.build-and-push.outputs.platforms }}
