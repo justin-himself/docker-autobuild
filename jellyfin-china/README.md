@@ -9,25 +9,9 @@ This image adds modified hosts file to help jellyfin users in China access *The 
 
 ### How to use 
 
-This image is fully compatible with original linuxserver's jellyfin build. Simpy substitute:
+The only differnce between this image and the original linuxserver build is /etc/hosts. Simpy substitute:
 
 ```
 linuxserver/jellyfin -> justinhimself/jellyfin-china
 lscr.io/linuxserver/jellyfin -> justinhimself/jellyfin-china
-```
-
-
-### Dockerfile
-
-```dockerfile
-FROM lscr.io/linuxserver/jellyfin
-
-COPY append_hosts.sh /
-RUN apt update &&\
-    apt -y install dnsutils &&\
-    apt clean &&\
-    rm -rf /var/lib/apt/lists/*
-
-RUN bash /append_hosts.sh &&\
-    cat /etc/hosts
 ```
