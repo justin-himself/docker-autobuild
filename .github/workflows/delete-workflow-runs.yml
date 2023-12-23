@@ -3,7 +3,6 @@ on:
   workflow_dispatch:
   schedule:
     - cron: '0 0 1 * *'
-  # remeber to change it to 0 0 1 * *
 
 jobs:
   del_runs:
