@@ -4,7 +4,7 @@ COPY i2pd /build
 
 RUN apk update \
     && apk --no-cache --virtual build-dependendencies add \
-     make gcc \g++ libtool zlib-dev boost-dev build-base \
+     make gcc g++ libtool zlib-dev boost-dev build-base \
       openssl-dev openssl miniupnpc-dev \
     && cd /build \
     && make USE_UPNP=yes \
